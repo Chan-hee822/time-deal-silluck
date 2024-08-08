@@ -8,6 +8,8 @@ public class TimeDealSilluckApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(TimeDealSilluckApplication.class, args);
+
+        System.out.println("project automation test");
     }
 
 }
