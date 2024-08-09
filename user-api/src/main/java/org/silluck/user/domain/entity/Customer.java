@@ -6,7 +6,7 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.hibernate.envers.AuditOverride;
-import org.silluck.user.domain.SignUpForm;
+import org.silluck.user.domain.dto.request.SignUpForm;
 
 import java.time.LocalDateTime;
 import java.util.Locale;
@@ -46,4 +46,15 @@ public class Customer extends BaseEntity {
                 .build();
     }
 
+    public void setVerifyExpiredAt(LocalDateTime verifyExpiredAt) {
+        this.verifyExpiredAt = verifyExpiredAt;
+    }
+
+    public void setVerifiedCode(String verifiedCode) {
+        this.verifiedCode = verifiedCode;
+    }
+
+    public void setVerify(boolean verify) {
+        this.verify = verify;
+    }
 }

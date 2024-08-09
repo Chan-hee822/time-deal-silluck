@@ -1,4 +1,4 @@
-package org.silluck.user.domain;
+package org.silluck.user.domain.dto.request;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
