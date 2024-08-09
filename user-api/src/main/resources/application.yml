@@ -1,0 +1,32 @@
+server:
+  port: 8081
+
+spring:
+  mvc:
+    path match:
+      matching-strategy: ant_path_matcher
+
+  cloud:
+    openfeign:
+      okhttp:
+        enabled: true
+      autoconfiguration:
+        jackson:
+          enabled: true
+
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    generate-ddl: true
+    show-sql: true
+  #    properties:
+  #      hibernate.format_sql: true
+
+  datasource:
+    url: jdbc:mysql://localhost:3306/user?useSSL=false,useUnicode=true&allowPublicKeyRetrieval=true
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: ${DB_PASSWORD}
+
+  jwt:
+    secret-key: ${JWT_SECRET_KEY}
