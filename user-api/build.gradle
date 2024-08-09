@@ -40,6 +40,9 @@ dependencies {
 
     compileOnly 'org.projectlombok:lombok'
 
+    //test 위한 DB
+    testImplementation 'com.h2database:h2'
+
     //RDB
     runtimeOnly 'com.mysql:mysql-connector-j'
     implementation 'mysql:mysql-connector-java:8.0.28'
