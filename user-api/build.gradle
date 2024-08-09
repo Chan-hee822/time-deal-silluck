@@ -49,6 +49,8 @@ dependencies {
 
     //mailgun
     implementation 'org.springframework.cloud:spring-cloud-starter-openfeign'
+    //email 인증 랜덤 코드 생성
+    implementation 'org.apache.commons:commons-lang3:3.12.0'
 
     //BaseEntity 사용
     implementation 'org.springframework.data:spring-data-envers'

@@ -1,9 +1,12 @@
-package org.silluck.user.domain.repository;
+package org.silluck.user.repository;
 
 import org.silluck.user.domain.entity.Customer;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.Optional;
+
 @Repository
 public interface CustomerRepository extends JpaRepository<Customer, Long> {
+    Optional<Customer> findByEmail(String email);
 }
