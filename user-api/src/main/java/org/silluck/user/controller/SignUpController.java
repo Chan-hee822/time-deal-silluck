@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/customer/signup")
+@RequestMapping("/signup")
 public class SignUpController {
 
     private final SignUpApplication signUpApplication;
@@ -18,7 +18,7 @@ public class SignUpController {
         return ResponseEntity.ok(signUpApplication.customerSignUp(form));
     }
 
-    @PutMapping("/verify")
+    @GetMapping("/verify/customer")
     public ResponseEntity<String> verifyCustomer(String email, String code) {   // 이메일을 노출시키는 상황 암호화 고려
         signUpApplication.verifyCustomer(email, code);
         return ResponseEntity.ok("인증이 완료되었습니다.");
