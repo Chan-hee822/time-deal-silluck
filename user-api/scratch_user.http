@@ -1,0 +1,65 @@
+### 회원 가입 (고객)
+POST http://localhost:8081/signup/customer
+Content-Type: application/json
+
+{
+  "email": "hanssang6301@gmail.com",
+  "nickname": "string",
+  "password": "string",
+  "phone": "string",
+  "address": "string"
+}
+
+### 이메일 인증 (고객)
+GET http://localhost:8081/signup/customer/verify?email=hanssang6301@gmail.com&code=1234asdf5g
+
+
+### 로그인 (고객)
+POST http://localhost:8081/signin/customer
+Content-Type: application/json
+
+{
+  "email": "hanssang6301@gmail.com",
+  "password": "string"
+}
+
+### 회원 정보 조회 (고객)
+GET http://localhost:8081/customer/getInfo
+Content-Type: application/json
+X-AUTH-TOKEN: eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJZdVp5SEI5c3d0UjFBdnRGSmg2d1drclVwMTlDbDBGYy9BbXI4TjVwQ1hVPSIsImp0aSI6ImptaXhNb2hQbjY2V3c0S3ZMQVdjalE9PSIsInJvbGVzIjoiQ1VTVE9NRVIiLCJpYXQiOjE3MjM1NDQwMjgsImV4cCI6MTcyMzYzMDQyOH0.4DGB6c8ZiKX70AXRQm_RwZJMQVc4Xnpi2k9FPz3maqeXmTOYzAf-8YGrcLf-N0EiW-uIZYfBFg-kHqPxzCYPpg
+
+### 잔액 변경 (고객)
+POST http://localhost:8081/customer/balance
+Content-Type: application/json
+X-AUTH-TOKEN: eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJZdVp5SEI5c3d0UjFBdnRGSmg2d1drclVwMTlDbDBGYy9BbXI4TjVwQ1hVPSIsImp0aSI6ImptaXhNb2hQbjY2V3c0S3ZMQVdjalE9PSIsInJvbGVzIjoiQ1VTVE9NRVIiLCJpYXQiOjE3MjM1NDQwMjgsImV4cCI6MTcyMzYzMDQyOH0.4DGB6c8ZiKX70AXRQm_RwZJMQVc4Xnpi2k9FPz3maqeXmTOYzAf-8YGrcLf-N0EiW-uIZYfBFg-kHqPxzCYPpg
+
+{
+  "from": "admin",
+  "message": "출금",
+  "money": -5000
+}
+#############################
+
+### 회원가입 (판매자)
+POST http://localhost:8081/signup/seller
+Content-Type: application/json
+
+{
+  "email": "hanssang6301@gmail.com",
+  "nickname": "string",
+  "password": "string",
+  "phone": "string",
+  "address": "string"
+}
+
+### 이메일 인증 (판매자)
+GET http://localhost:8081/signup/seller/verify?email=hanssang6301@gmail.com&code=1234asdf5g
+
+### 로그인 (판매자)
+POST http://localhost:8081/signin/seller
+Content-Type: application/json
+
+{
+  "email": "hanssang6301@gmail.com",
+  "password": "string"
+}
