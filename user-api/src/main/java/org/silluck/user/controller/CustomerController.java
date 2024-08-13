@@ -7,7 +7,7 @@ import org.silluck.user.domain.customer.CustomerDTO;
 import org.silluck.user.domain.entity.Customer;
 import org.silluck.user.exception.CustomException;
 import org.silluck.user.exception.ErrorCode;
-import org.silluck.user.service.CustomerService;
+import org.silluck.user.service.customer.CustomerService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestHeader;

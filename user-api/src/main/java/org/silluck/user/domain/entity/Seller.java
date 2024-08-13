@@ -17,18 +17,16 @@ import java.util.Locale;
 @AllArgsConstructor
 @AuditOverride(forClass = BaseEntity.class)
 @Entity
-public class Customer extends BaseEntity {
+public class Seller extends BaseEntity {
     @Id
     @Column(name = "Id", nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(unique = true)
-    // email 양식 Validation(검증) 어떻게 하면 좋을지 고민해보기
     private String email;
     private String nickname;
     private String password;
-    // 폰 번호 Validation(검증) 어떻게 하면 좋을지 고민해보기
     private String phone;
     private String address;
 
@@ -36,8 +34,8 @@ public class Customer extends BaseEntity {
     private String verifiedCode;
     private boolean verify;
 
-    public static Customer from(SignUpForm form) {
-        return Customer.builder()
+    public static Seller from(SignUpForm form) {
+        return Seller.builder()
                 .email(form.getEmail().toLowerCase(Locale.ROOT))
                 .password(form.getPassword())
                 .nickname(form.getNickname())

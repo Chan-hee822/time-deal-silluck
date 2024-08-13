@@ -7,8 +7,10 @@ import org.silluck.user.client.MailgunClient;
 import org.silluck.user.client.mailgun.SendMailForm;
 import org.silluck.user.domain.dto.request.SignUpForm;
 import org.silluck.user.domain.entity.Customer;
+import org.silluck.user.domain.entity.Seller;
 import org.silluck.user.exception.CustomException;
-import org.silluck.user.service.SignUpCustomerService;
+import org.silluck.user.service.customer.SignUpCustomerService;
+import org.silluck.user.service.seller.SignUpSellerService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -21,7 +23,9 @@ public class SignUpApplication {    // 회원계정과 인증메일을 보내는
 
     private final MailgunClient mailgunClient;
     private final SignUpCustomerService signUpCustomerService;
+    private final SignUpSellerService signUpSellerService;
 
+    // 유저 - 고객
     public void verifyCustomer(String email, String code) {
         signUpCustomerService.verifyEmail(email, code);
     }
@@ -40,12 +44,42 @@ public class SignUpApplication {    // 회원계정과 인증메일을 보내는
                     .to(form.getEmail())
                     .subject("Verification Email")
                     .text(getVerificationEmailBody(
-                            form.getEmail(), form.getNickname(), code))
+                            form.getEmail(), form.getNickname(), "customer", code))
                     .build();
 
             log.info("Send Email Result : {}", mailgunClient.sendEmail(sendMailForm));
 
             signUpCustomerService.changeCustomerValidationEmail(customer.getId(), code);
+
+            return "회원 가입에 성공하셨습니다.";
+        }
+    }
+
+    // 유저 - 판매자
+    public void verifySeller(String email, String code) {
+        signUpSellerService.verifyEmail(email, code);
+    }
+
+    @Transactional
+    public String sellerSignUp(SignUpForm form) {
+        if (signUpSellerService.isEmailExist(form.getEmail())) {
+            // custom exception
+            throw new CustomException(ALREADY_EXIST_USER);
+        } else {
+            Seller seller = signUpSellerService.signUp(form);
+
+            String code = getRandomCode();
+            SendMailForm sendMailForm = SendMailForm.builder()
+                    .from("silluckofficial@silluck.com")
+                    .to(form.getEmail())
+                    .subject("Verification Email")
+                    .text(getVerificationEmailBody(
+                            form.getEmail(), form.getNickname(), "seller", code))
+                    .build();
+
+            log.info("Send Email Result : {}", mailgunClient.sendEmail(sendMailForm));
+
+            signUpSellerService.changeSellerValidationEmail(seller.getId(), code);
 
             return "회원 가입에 성공하셨습니다.";
         }
@@ -59,11 +93,11 @@ public class SignUpApplication {    // 회원계정과 인증메일을 보내는
     }
 
     //이메일을 위한 템플릿
-    private String getVerificationEmailBody(String email, String name, String code) {
+    private String getVerificationEmailBody(String email, String name, String type, String code) {
         StringBuilder stringBuilder = new StringBuilder();
         return stringBuilder.append("Hello ").append(name)
                 .append("! Please Click Link for verification.\n\n")
-                .append("http://localhost:8081/sighup/verify/customer?email=")
+                .append("http://localhost:8081/signup/" + type + "/verify?email=")
                 .append(email)
                 .append("&code=")
                 .append(code).toString();

@@ -3,6 +3,7 @@ package org.silluck.user.service;
 import org.junit.jupiter.api.Test;
 import org.silluck.user.domain.dto.request.SignUpForm;
 import org.silluck.user.domain.entity.Customer;
+import org.silluck.user.service.customer.SignUpCustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.TestPropertySource;

@@ -8,7 +8,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.silluck.domain.config.JwtAuthenticationProvider;
 import org.silluck.domain.domain.common.UserVo;
-import org.silluck.user.service.CustomerService;
+import org.silluck.user.service.customer.CustomerService;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
