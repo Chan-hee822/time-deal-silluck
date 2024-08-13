@@ -63,7 +63,7 @@ public class SignUpApplication {    // 회원계정과 인증메일을 보내는
         StringBuilder stringBuilder = new StringBuilder();
         return stringBuilder.append("Hello ").append(name)
                 .append("! Please Click Link for verification.\n\n")
-                .append("http://localhost:8081/customer/sighup/verify?email=")
+                .append("http://localhost:8081/sighup/verify/customer?email=")
                 .append(email)
                 .append("&code=")
                 .append(code).toString();
