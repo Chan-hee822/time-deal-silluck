@@ -1,4 +1,4 @@
-package org.silluck.user.service;
+package org.silluck.user.service.customer;
 
 import lombok.RequiredArgsConstructor;
 import org.silluck.user.domain.dto.request.SignUpForm;

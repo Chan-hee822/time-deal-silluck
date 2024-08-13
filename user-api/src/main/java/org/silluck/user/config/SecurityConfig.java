@@ -44,6 +44,8 @@ public class SecurityConfig {
                                 .permitAll()// 해당 경로는 인증 없이 접근 가능
                                 .requestMatchers("/customer/**") // 해당 경로는 인증이 필요
                                 .hasAnyAuthority("CUSTOMER")
+                                .requestMatchers("/seller/**")
+                                .hasAnyAuthority("SELLER")
                         ;
                     } catch (Exception e) {
                         throw new RuntimeException(e);
