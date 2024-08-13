@@ -36,6 +36,9 @@ public class Customer extends BaseEntity {
     private String verifiedCode;
     private boolean verify;
 
+    @Column(columnDefinition = "int default 0")
+    private Integer balance;    //  현재 잔액 이중화하여 저장
+
     public static Customer from(SignUpForm form) {
         return Customer.builder()
                 .email(form.getEmail().toLowerCase(Locale.ROOT))
@@ -57,5 +60,9 @@ public class Customer extends BaseEntity {
 
     public void setVerify(boolean verify) {
         this.verify = verify;
+    }
+
+    public void setBalance(Integer balance) {
+        this.balance = balance;
     }
 }
