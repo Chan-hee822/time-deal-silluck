@@ -9,6 +9,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.silluck.domain.config.JwtAuthenticationProvider;
 import org.silluck.domain.domain.common.UserVo;
 import org.silluck.user.service.customer.CustomerService;
+import org.silluck.user.service.seller.SellerService;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -28,6 +29,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
     private final JwtAuthenticationProvider tokenProvider;
     private final CustomerService customerService;
+    private final SellerService sellerService;
 
     // 실제 필터링 로직은 doFilterInternal 에 들어감
     // JWT 토큰의 인증 정보를 현재 쓰레드의 SecurityContext 에 저장하는 역할 수행
@@ -60,8 +62,13 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
             SecurityContextHolder.getContext().setAuthentication(authentication);
 
             // 고객 정보가 있는지 확인
-            customerService.findByIdAndEmail(userVo.getId(), userVo.getEmail()).orElseThrow(
-                    () -> new ServletException("Invalid Access"));  // 토큰이 유효한지 확인 위해 DB 조회
+            if (role.equals("CUSTOMER")) {
+                customerService.findByIdAndEmail(userVo.getId(), userVo.getEmail()).orElseThrow(
+                        () -> new ServletException("Invalid Access"));  // 토큰이 유효한지 확인 위해 DB 조회
+            } else if (role.equals("SELLER")) {
+                sellerService.findByIdAndEmail(userVo.getId(), userVo.getEmail()).orElseThrow(
+                        () -> new ServletException("Invalid Access"));  // 토큰이 유효한지 확인 위해 DB 조회
+            }
         } else {
             response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
             response.setCharacterEncoding("UTF-8");
