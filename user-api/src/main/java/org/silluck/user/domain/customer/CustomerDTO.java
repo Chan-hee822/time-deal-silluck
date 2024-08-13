@@ -12,8 +12,13 @@ public class CustomerDTO {
 
     private Long id;
     private String email;
+    private Integer balance;
 
     public static CustomerDTO from(Customer customer) {
-        return new CustomerDTO(customer.getId(), customer.getEmail());
+        return CustomerDTO.builder()
+                .id(customer.getId())
+                .email(customer.getEmail())
+                .balance(customer.getBalance() == null ? 0 : customer.getBalance())
+                .build();
     }
 }
