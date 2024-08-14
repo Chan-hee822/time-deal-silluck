@@ -1,5 +1,5 @@
 server:
-  port: 8081
+  port: 8082
 
 spring:
   mvc:
@@ -16,22 +16,18 @@ spring:
 
   jpa:
     hibernate:
-      ddl-auto: update
+      ddl-auto: create-drop
     generate-ddl: true
     show-sql: true
+    database: h2
   #    properties:
   #      hibernate.format_sql: true
 
   datasource:
-    url: jdbc:mysql://localhost:3306/user?useSSL=false&useUnicode=true&allowPublicKeyRetrieval=true
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    username: root
-    password: ${DB_PASSWORD}
+    url: jdbc:h2:file:/Users/hanchanhee/dev/h2Data
+    driver-class-name: org.h2.Driver
+    username: sa
+    password: 1
 
   jwt:
     secret-key: ${JWT_SECRET_KEY}
-
-eureka:
-  client:
-    serviceUrl:
-      defaultZone: http://localhost:8761/eureka/
