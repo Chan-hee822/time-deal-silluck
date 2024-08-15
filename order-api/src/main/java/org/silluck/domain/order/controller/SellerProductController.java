@@ -5,7 +5,10 @@ import org.silluck.domain.config.JwtAuthenticationProvider;
 import org.silluck.domain.domain.common.UserVo;
 import org.silluck.domain.order.domain.dto.request.AddProductForm;
 import org.silluck.domain.order.domain.dto.request.AddProductItemForm;
+import org.silluck.domain.order.domain.dto.request.UpdateProductForm;
+import org.silluck.domain.order.domain.dto.request.UpdateProductItemForm;
 import org.silluck.domain.order.domain.dto.response.ProductDTO;
+import org.silluck.domain.order.domain.dto.response.ProductItemDTO;
 import org.silluck.domain.order.service.ProductItemService;
 import org.silluck.domain.order.service.ProductService;
 import org.springframework.http.ResponseEntity;
@@ -38,5 +41,25 @@ public class SellerProductController {
         UserVo userVo = provider.getUserVo(token);
         return ResponseEntity.ok(ProductDTO.from(
                 productItemService.addProductItem(userVo.getId(), form)));
+    }
+
+    @PutMapping
+    public ResponseEntity<ProductDTO> updateProduct(
+            @RequestHeader(name = "X-AUTH-TOKEN") String token,
+            @RequestBody UpdateProductForm form) {
+
+        UserVo userVo = provider.getUserVo(token);
+        return ResponseEntity.ok(ProductDTO.from(
+                productService.updateProduct(userVo.getId(), form)));
+    }
+
+    @PutMapping("/item")
+    public ResponseEntity<ProductItemDTO> updateProductItem(
+            @RequestHeader(name = "X-AUTH-TOKEN") String token,
+            @RequestBody UpdateProductItemForm form) {
+
+        UserVo userVo = provider.getUserVo(token);
+        return ResponseEntity.ok(ProductItemDTO.from(
+                productItemService.updateProductItem(userVo.getId(), form)));
     }
 }
