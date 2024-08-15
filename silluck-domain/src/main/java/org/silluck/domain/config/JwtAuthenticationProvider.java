@@ -28,7 +28,7 @@ public class JwtAuthenticationProvider {
     public String createToken(String userPk, Long id, UserType userType) {
         Claims claims = Jwts.claims()
                 .setSubject(Aes256Util.encrypt(userPk)).setId(Aes256Util.encrypt(id.toString()));
-        claims.put("roles", userType);
+        claims.put("roles", userType.getKey());
 
         Key key = Keys.hmacShaKeyFor(secretKey.getBytes());
 

@@ -43,6 +43,7 @@ dependencies {
 
 	//eureka client
 	implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'
+	implementation 'org.springframework.boot:spring-boot-starter-actuator'
 
 	//Swagger
 	implementation 'io.springfox:springfox-swagger-ui:3.0.0'
