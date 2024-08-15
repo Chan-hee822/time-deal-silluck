@@ -13,7 +13,6 @@ X-AUTH-TOKEN: eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJZdVp5SEI5c3d0UjFBdnRGSmg2d1drclVwM
     }
   ],
   "name": "나이키 덩크"
-  
 }
 
 ### 상품 아이템 추가 (셀러)
@@ -69,3 +68,11 @@ X-AUTH-TOKEN: eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJZdVp5SEI5c3d0UjFBdnRGSmg2d1drclVwM
 DELETE http://localhost:8082/seller/product/item?id=2
 Content-Type: application/json
 X-AUTH-TOKEN: eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJZdVp5SEI5c3d0UjFBdnRGSmg2d1drclVwMTlDbDBGYy9BbXI4TjVwQ1hVPSIsImp0aSI6ImptaXhNb2hQbjY2V3c0S3ZMQVdjalE9PSIsInJvbGVzIjoiUk9MRV9TRUxMRVIiLCJpYXQiOjE3MjM3MzE0NjMsImV4cCI6MTcyMzgxNzg2M30.G7kxqXGSAsL8CnX0N6fD1IbqI2BxC9eE8Te4ftuZeMN2afX3-97sK6bWlWEi6uwRfjq_QALjW3__TNY2D8NNhw
+
+### 상품 검색 (고객)
+GET http://localhost:8082/search/product?name=나이키
+Content-Type: application/json
+
+### 상품 상세 검색 (고객)
+GET http://localhost:8082/search/product/detail?productId=1
+Content-Type: application/json

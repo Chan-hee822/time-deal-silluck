@@ -24,4 +24,12 @@ public class ProductDTO {
                 .items(product.getProductItems().stream().map(ProductItemDTO::from).toList())
                 .build();
     }
+
+    public static ProductDTO withoutItemsFrom(Product product) {
+        return ProductDTO.builder()
+                .id(product.getId())
+                .name(product.getName())
+                .description(product.getDescription())
+                .build();
+    }
 }
