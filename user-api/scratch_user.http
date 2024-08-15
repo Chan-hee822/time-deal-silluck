@@ -23,10 +23,24 @@ Content-Type: application/json
   "password": "string"
 }
 
+### 로그인 (고객) - api gateway
+POST http://localhost:9090/signin/customer
+Content-Type: application/json
+
+{
+  "email": "hanssang6301@gmail.com",
+  "password": "string"
+}
+
 ### 회원 정보 조회 (고객)
 GET http://localhost:8081/customer/getInfo
 Content-Type: application/json
-X-AUTH-TOKEN: eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJZdVp5SEI5c3d0UjFBdnRGSmg2d1drclVwMTlDbDBGYy9BbXI4TjVwQ1hVPSIsImp0aSI6ImptaXhNb2hQbjY2V3c0S3ZMQVdjalE9PSIsInJvbGVzIjoiQ1VTVE9NRVIiLCJpYXQiOjE3MjM1NDQwMjgsImV4cCI6MTcyMzYzMDQyOH0.4DGB6c8ZiKX70AXRQm_RwZJMQVc4Xnpi2k9FPz3maqeXmTOYzAf-8YGrcLf-N0EiW-uIZYfBFg-kHqPxzCYPpg
+X-AUTH-TOKEN: eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJZdVp5SEI5c3d0UjFBdnRGSmg2d1drclVwMTlDbDBGYy9BbXI4TjVwQ1hVPSIsImp0aSI6ImptaXhNb2hQbjY2V3c0S3ZMQVdjalE9PSIsInJvbGVzIjoiQ1VTVE9NRVIiLCJpYXQiOjE3MjM2ODMyNjgsImV4cCI6MTcyMzc2OTY2OH0.eV6zcHA09wH8hW9F3atu028yn9lvjPyMrgZz8mrXWUJf6ZrcX0C9diuyGtj_TidPgbTsBqXpiMO84GhIWCx1Ww
+
+### 회원 정보 조회 (고객) - api gateway
+GET http://localhost:9090/customer/getInfo
+Content-Type: application/json
+X-AUTH-TOKEN: eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJZdVp5SEI5c3d0UjFBdnRGSmg2d1drclVwMTlDbDBGYy9BbXI4TjVwQ1hVPSIsImp0aSI6ImptaXhNb2hQbjY2V3c0S3ZMQVdjalE9PSIsInJvbGVzIjoiQ1VTVE9NRVIiLCJpYXQiOjE3MjM2ODMyNjgsImV4cCI6MTcyMzc2OTY2OH0.eV6zcHA09wH8hW9F3atu028yn9lvjPyMrgZz8mrXWUJf6ZrcX0C9diuyGtj_TidPgbTsBqXpiMO84GhIWCx1Ww
 
 ### 잔액 변경 (고객)
 POST http://localhost:8081/customer/balance
@@ -63,3 +77,8 @@ Content-Type: application/json
   "email": "hanssang6301@gmail.com",
   "password": "string"
 }
+
+### 회원 정보 조회 (판매자)
+GET http://localhost:8081/seller/getInfo
+Content-Type: application/json
+X-AUTH-TOKEN: eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJZdVp5SEI5c3d0UjFBdnRGSmg2d1drclVwMTlDbDBGYy9BbXI4TjVwQ1hVPSIsImp0aSI6ImptaXhNb2hQbjY2V3c0S3ZMQVdjalE9PSIsInJvbGVzIjoiUk9MRV9TRUxMRVIiLCJpYXQiOjE3MjM2ODYxMDQsImV4cCI6MTcyMzc3MjUwNH0.P_BkfYLeEb-f5aczldWemfNSqCMkBbC7qgzkJx5-ecDhlxiPBA4FhCoJiiHJmaQoFMsJFG1931l1POYOvSKNTA
