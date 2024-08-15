@@ -1,0 +1,33 @@
+### 상품 추가 (셀러)
+POST http://localhost:8082/seller/product
+Content-Type: application/json
+X-AUTH-TOKEN: eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJZdVp5SEI5c3d0UjFBdnRGSmg2d1drclVwMTlDbDBGYy9BbXI4TjVwQ1hVPSIsImp0aSI6ImptaXhNb2hQbjY2V3c0S3ZMQVdjalE9PSIsInJvbGVzIjoiUk9MRV9TRUxMRVIiLCJpYXQiOjE3MjM3MzE0NjMsImV4cCI6MTcyMzgxNzg2M30.G7kxqXGSAsL8CnX0N6fD1IbqI2BxC9eE8Te4ftuZeMN2afX3-97sK6bWlWEi6uwRfjq_QALjW3__TNY2D8NNhw
+
+{
+  "description": "나이키 운동화",
+  "items": [
+    {
+      "count": 1,
+      "name": "덩크 검빨",
+      "price": 100000
+    }
+  ],
+  "name": "나이키 덩크"
+}
+
+### 상품 아이템 추가 (셀러)
+POST http://localhost:8082/seller/product/item
+Content-Type: application/json
+X-AUTH-TOKEN: eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJZdVp5SEI5c3d0UjFBdnRGSmg2d1drclVwMTlDbDBGYy9BbXI4TjVwQ1hVPSIsImp0aSI6ImptaXhNb2hQbjY2V3c0S3ZMQVdjalE9PSIsInJvbGVzIjoiUk9MRV9TRUxMRVIiLCJpYXQiOjE3MjM3MzE0NjMsImV4cCI6MTcyMzgxNzg2M30.G7kxqXGSAsL8CnX0N6fD1IbqI2BxC9eE8Te4ftuZeMN2afX3-97sK6bWlWEi6uwRfjq_QALjW3__TNY2D8NNhw
+
+{
+  "description": "나이키 운동화",
+  "items": [
+    {
+      "count": 1,
+      "name": "덩크 검빨",
+      "price": 100000
+    }
+  ],
+  "name": "나이키 덩크"
+}
