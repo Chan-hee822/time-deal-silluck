@@ -45,6 +45,17 @@ public class WishlistApplication {
     }
 
     /**
+     * 엣지 케이스 처리
+     * 실직적으로 변하는 테이터 : 상품 삭제, 수량 변경
+     * wishlist refresh 작업 이미 구현
+     * wishlist 조회 로직 재사용
+     */
+    public Wishlist updateWishlist(Long customerId, Wishlist wishlist) {
+        wishlistService.putWishlist(customerId, wishlist);
+        return getWishlist(customerId);
+    }
+
+    /**
      * 1. 장바구니에 상품 추가
      * 2. 상품의 가격이나 수량이 변동된다.
      * 3. 변동 되면 그것을 빼주거나하는 등 어떤 처리가 필요하다.
