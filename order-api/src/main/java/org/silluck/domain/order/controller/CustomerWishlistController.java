@@ -32,4 +32,13 @@ public class CustomerWishlistController {
         UserVo userVo = provider.getUserVo(token);
         return ResponseEntity.ok(wishlistApplication.getWishlist(userVo.getId()));
     }
+
+    @PutMapping
+    private ResponseEntity<Wishlist> updateWishlist(
+            @RequestHeader(name = "X-AUTH-TOKEN") String token,
+            @RequestBody Wishlist wishlist) {
+        UserVo userVo = provider.getUserVo(token);
+        return ResponseEntity.ok(wishlistApplication
+                .updateWishlist(userVo.getId(), wishlist));
+    }
 }
