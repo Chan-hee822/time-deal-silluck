@@ -22,8 +22,14 @@ public class CustomerWishlistController {
             @RequestHeader(name = "X-AUTH-TOKEN") String token,
             @RequestBody AddProductInWishlistForm form) {
         UserVo userVo = provider.getUserVo(token);
-        Wishlist wishlist = wishlistApplication
-                .addProductInWishlist(userVo.getId(), form);
-        return ResponseEntity.ok(wishlist);
+        return ResponseEntity.ok(wishlistApplication
+                .addProductInWishlist(userVo.getId(), form));
+    }
+
+    @GetMapping
+    public ResponseEntity<Wishlist> getWishlist(
+            @RequestHeader(name = "X-AUTH-TOKEN") String token) {
+        UserVo userVo = provider.getUserVo(token);
+        return ResponseEntity.ok(wishlistApplication.getWishlist(userVo.getId()));
     }
 }
