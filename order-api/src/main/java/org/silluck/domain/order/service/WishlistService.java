@@ -25,7 +25,13 @@ public class WishlistService {
     private final RedisClient redisClient;
 
     public Wishlist getWishlist(Long customerId) {
-        return redisClient.get(customerId, Wishlist.class);
+        Wishlist wishlist = redisClient.get(customerId, Wishlist.class);
+        return wishlist == null ? new Wishlist() : wishlist;
+    }
+
+    public Wishlist putWishlist(Long customerId, Wishlist wishlist) {
+        redisClient.put(customerId, wishlist);
+        return wishlist;
     }
 
     public Wishlist addProductInWishlist(Long customerId, AddProductInWishlistForm form) {
@@ -43,6 +49,7 @@ public class WishlistService {
          */
         Optional<Wishlist.Product> productOptional = wishlist.getProducts()
                 .stream().filter(p -> p.getId().equals(form.getId())).findFirst();
+
         if (productOptional.isPresent()) {
             Wishlist.Product redisProduct = productOptional.get();
 

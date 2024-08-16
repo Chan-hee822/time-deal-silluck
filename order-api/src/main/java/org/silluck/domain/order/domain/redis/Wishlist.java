@@ -13,6 +13,7 @@ import java.util.List;
 
 @Data
 @NoArgsConstructor
+@AllArgsConstructor
 @RedisHash("wishlist")  // key의 prefix 설정
 public class Wishlist {
     @Id
@@ -20,6 +21,10 @@ public class Wishlist {
     private List<Product> products = new ArrayList<>();
     // 장바구니 안 상품 정보가 바뀌었을 때 알려주는 메시지
     private List<String> messages = new ArrayList<>();
+
+    public Wishlist(Long customerId) {
+        this.customerId = customerId;
+    }
 
     public void addMessage(String message) {
         messages.add(message);
@@ -73,4 +78,7 @@ public class Wishlist {
         }
     }
 
+    public Wishlist clone() {
+        return new Wishlist(customerId, products, messages);
+    }
 }

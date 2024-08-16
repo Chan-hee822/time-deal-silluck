@@ -5,10 +5,10 @@ import org.silluck.domain.config.JwtAuthenticationProvider;
 import org.silluck.domain.order.domain.dto.request.AddProductForm;
 import org.silluck.domain.order.domain.dto.request.AddProductItemForm;
 import org.silluck.domain.order.domain.entity.Product;
-import org.silluck.domain.order.domain.entity.ProductItem;
 import org.silluck.domain.order.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.TestPropertySource;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,6 +17,9 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 @SpringBootTest
+@TestPropertySource(properties = {
+        "JWT_SECRET_KEY=testSecretKey"
+})
 class ProductServiceTest {
 
     @Autowired
