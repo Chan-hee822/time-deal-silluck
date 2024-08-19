@@ -15,6 +15,9 @@ public enum ErrorCode {
     WISHLIST_CHANGE_FAIL(HttpStatus.BAD_REQUEST, "장바구니에 추가할 수 없습니다."),
     ITEM_COUNT_NOT_ENOUGH(HttpStatus.BAD_REQUEST, "상품 수량이 부족합니다."),
 
+    ORDER_FAIL_CHECK_WISHLIST(HttpStatus.BAD_REQUEST, "상품 정보가 변경되어 주문이 불가합니다. 장바구니를 확인해주세요."),
+    ORDER_FAIL_NOT_ENOUGH_BALANCE(HttpStatus.BAD_REQUEST, "잔액이 부족하여 주문이 불가합니다. 잔액을 확인해주세요."),
+
     NOT_FOUND_ORDER(HttpStatus.BAD_REQUEST, "해당 주문이 존재하지 않습니다.")
     ;
 
