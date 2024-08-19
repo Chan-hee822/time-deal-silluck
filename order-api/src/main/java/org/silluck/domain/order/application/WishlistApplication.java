@@ -67,7 +67,7 @@ public class WishlistApplication {
          * 2. redis 에 저장할 때는 메시지가 없어야 한다.
          */
         Wishlist wishlist = refreshWishlist(wishlistService.getWishlist(customerId));
-
+        wishlistService.putWishlist(customerId, wishlist);
         Wishlist returnWishlist = new Wishlist();
         returnWishlist.setCustomerId(customerId);
         returnWishlist.setProducts(wishlist.getProducts());
@@ -79,7 +79,7 @@ public class WishlistApplication {
         return returnWishlist;
     }
 
-    private Wishlist refreshWishlist(Wishlist wishlist) {
+    protected Wishlist refreshWishlist(Wishlist wishlist) {
         /**
          * 1. 상품이나 상품 아이템 정보, 가격, 수량 변경 체크 그에 맞는 알람 제공
          * 2. 바뀐 데이터 임의로 변경
@@ -171,7 +171,6 @@ public class WishlistApplication {
                 wishlist.addMessage(sb.toString().trim());
             }
         }
-        wishlistService.putWishlist(wishlist.getCustomerId(), wishlist);
         return wishlist;
     }
 

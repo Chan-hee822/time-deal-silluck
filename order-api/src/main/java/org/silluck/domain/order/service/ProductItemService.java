@@ -54,4 +54,10 @@ public class ProductItemService {
                 .orElseThrow(() -> new CustomException(NOT_FOUND_ITEM));
         productItemRepository.delete(productItem);
     }
+
+    // 1. get & save
+    // (2. 바로 update하는 방식도 고려해볼 수 있음)
+    public ProductItem getProductItem(Long id) {
+        return productItemRepository.getReferenceById(id);
+    }
 }
