@@ -14,11 +14,11 @@ public interface UserClient {
 
     @GetMapping("/getInfo")
     ResponseEntity<CustomerDTO> getCustomerInfo(
-            @RequestHeader(name = "X-AUTH-TOKEN") String token);
+            @RequestHeader(name = "X-USER_ID") String token);
 
     @PostMapping("/balance")
     public ResponseEntity<Integer> changeBalance(
-            @RequestHeader(name = "X-AUTH-TOKEN") String token,
+            @RequestHeader(name = "X-USER-ID") String token,
             @RequestBody ChangeBalanceForm form);
 
 }

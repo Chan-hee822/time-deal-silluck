@@ -1,8 +1,8 @@
 package org.silluck.user.application;
 
 import lombok.RequiredArgsConstructor;
-import org.silluck.domain.config.JwtAuthenticationProvider;
-import org.silluck.domain.domain.common.UserType;
+import org.silluck.user.config.JwtAuthenticationProvider;
+import org.silluck.user.domain.common.UserType;
 import org.silluck.user.domain.dto.request.SignInForm;
 import org.silluck.user.domain.entity.Customer;
 import org.silluck.user.domain.entity.Seller;

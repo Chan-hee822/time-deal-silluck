@@ -1,7 +1,6 @@
-package org.silluck.user.domain.seller;
+package org.silluck.user.domain.dto.response;
 
 import lombok.*;
-import org.silluck.user.domain.entity.Customer;
 import org.silluck.user.domain.entity.Seller;
 
 @Getter

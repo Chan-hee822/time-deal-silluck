@@ -2,6 +2,9 @@ server:
   port: 8081
 
 spring:
+  application:
+    name: user-api
+
   mvc:
     path match:
       matching-strategy: ant_path_matcher

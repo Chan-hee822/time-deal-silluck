@@ -1,10 +1,10 @@
 package org.silluck.user.controller;
 
 import lombok.RequiredArgsConstructor;
-import org.silluck.domain.config.JwtAuthenticationProvider;
-import org.silluck.domain.domain.common.UserVo;
+import org.silluck.user.config.JwtAuthenticationProvider;
+import org.silluck.user.domain.common.UserVo;
 import org.silluck.user.domain.entity.Seller;
-import org.silluck.user.domain.seller.SellerDTO;
+import org.silluck.user.domain.dto.response.SellerDTO;
 import org.silluck.user.exception.CustomException;
 import org.silluck.user.exception.ErrorCode;
 import org.silluck.user.service.seller.SellerService;
