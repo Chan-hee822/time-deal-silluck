@@ -1,4 +1,4 @@
-package org.silluck.user.domain.customer;
+package org.silluck.user.domain.dto.response;
 
 import lombok.*;
 import org.silluck.user.domain.entity.Customer;

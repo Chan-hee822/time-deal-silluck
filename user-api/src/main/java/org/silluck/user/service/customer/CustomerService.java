@@ -13,11 +13,8 @@ public class CustomerService {
 
     private final CustomerRepository customerRepository;
 
-    public Optional<Customer> findByIdAndEmail(Long id, String email) {
-        // chaining 익숙해지기 위해 이렇게 표현
-        return customerRepository.findById(id).stream().filter(
-                customer -> customer.getEmail().equals(email)
-        ).findFirst();
+    public Optional<Customer> findById(Long id) {
+        return customerRepository.findById(id);
     }
 
     public Optional<Customer> findValidCustomer(String email, String password) {

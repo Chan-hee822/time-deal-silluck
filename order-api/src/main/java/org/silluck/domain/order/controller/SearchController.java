@@ -13,7 +13,7 @@ import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/search/product")
+@RequestMapping("/product/search")
 public class SearchController {
 
     private final ProductSearchService productSearchService;

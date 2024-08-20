@@ -14,11 +14,11 @@ import static org.springframework.security.config.Customizer.withDefaults;
 
 @Configuration
 @EnableWebFluxSecurity
-public class SecurityConfig2 {
+public class SecurityConfig {
 
     private final JwtFilter jwtFilter;
 
-    public SecurityConfig2(JwtFilter jwtFilter) {
+    public SecurityConfig(JwtFilter jwtFilter) {
         this.jwtFilter = jwtFilter;
     }
 
@@ -33,12 +33,13 @@ public class SecurityConfig2 {
                 .headers(headers -> headers.frameOptions(ServerHttpSecurity.HeaderSpec.FrameOptionsSpec::disable))
                 .securityContextRepository(NoOpServerSecurityContextRepository.getInstance())
                 .authorizeExchange(authorizeExchangeSpec -> authorizeExchangeSpec
-                        .pathMatchers("/signup/**", "/signin/**",
-                                "/v2/api-docs/**", "/swagger-resources/**",
-                                "/configuration/ui", "/configuration/security",
-                                "/swagger-ui/**", "/webjars/**", "/swagger-ui.html")
-                        .permitAll()
-                        .anyExchange().hasAnyAuthority("SELLER", "USER")
+                                .pathMatchers("/signup/**", "/signin/**","/product/search/**")
+                                .permitAll()
+                                .pathMatchers("/seller/**").hasAuthority("ROLE_SELLER") // 판매자만 접근 가능
+                                .pathMatchers("/customer/**").hasAuthority("ROLE_CUSTOMER") // 고객만 접근 가능
+                                .pathMatchers("/wishlist/**").hasAuthority("ROLE_CUSTOMER")
+                                .pathMatchers("/order/**").hasAuthority("ROLE_CUSTOMER")
+                                .pathMatchers("/product/**").hasAuthority("ROLE_SELLER")
                 )
                 .exceptionHandling(exceptionHandlingSpec -> exceptionHandlingSpec
                         .authenticationEntryPoint((exchange, denied) -> Mono.fromRunnable(() -> {

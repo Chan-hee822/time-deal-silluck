@@ -8,14 +8,14 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/customer/order")
+@RequestMapping("/order")
 public class OrderController {
 
     private final OrderApplication orderApplication;
 
     @PostMapping
     public ResponseEntity<Void> order(
-            @RequestHeader(name = "X-AUTH-TOKEN") String token,
+            @RequestHeader(name = "X-USER-ID") String token,
             @RequestBody Wishlist wishlist) {
         orderApplication.Order(token, wishlist);
         return ResponseEntity.ok().build();

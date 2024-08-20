@@ -2,6 +2,9 @@ server:
   port: 8082
 
 spring:
+  application:
+    name: order-api
+
   mvc:
     path match:
       matching-strategy: ant_path_matcher
@@ -32,9 +35,6 @@ spring:
     redis:
       host: localhost
       port: 6379
-
-  jwt:
-    secret-key: ${JWT_SECRET_KEY}
 
 eureka:
   client:

@@ -1,8 +1,6 @@
 package org.silluck.domain.order.controller;
 
 import lombok.RequiredArgsConstructor;
-import org.silluck.domain.config.JwtAuthenticationProvider;
-import org.silluck.domain.domain.common.UserVo;
 import org.silluck.domain.order.domain.dto.request.AddProductForm;
 import org.silluck.domain.order.domain.dto.request.AddProductItemForm;
 import org.silluck.domain.order.domain.dto.request.UpdateProductForm;
@@ -16,70 +14,63 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/seller/product")
+@RequestMapping("/product")
 public class SellerProductController {
 
     private final ProductService productService;
     private final ProductItemService productItemService;
-    private final JwtAuthenticationProvider provider;
 
     @PostMapping
     public ResponseEntity<ProductDTO> addProduct(
-            @RequestHeader(name = "X-AUTH-TOKEN") String token,
+            @RequestHeader(name = "X-USER-ID") String token,
             @RequestBody AddProductForm form) {
 
-        UserVo userVo = provider.getUserVo(token);
         return ResponseEntity.ok(ProductDTO.from(
-                productService.addProduct(userVo.getId(), form)));
+                productService.addProduct(Long.parseLong(token), form)));
     }
 
     @PostMapping("/item")
     public ResponseEntity<ProductDTO> addProductItem(
-            @RequestHeader(name = "X-AUTH-TOKEN") String token,
+            @RequestHeader(name = "X-USER-ID") String token,
             @RequestBody AddProductItemForm form) {
 
-        UserVo userVo = provider.getUserVo(token);
         return ResponseEntity.ok(ProductDTO.from(
-                productItemService.addProductItem(userVo.getId(), form)));
+                productItemService.addProductItem(Long.parseLong(token), form)));
     }
 
     @PutMapping
     public ResponseEntity<ProductDTO> updateProduct(
-            @RequestHeader(name = "X-AUTH-TOKEN") String token,
+            @RequestHeader(name = "X-USER-ID") String token,
             @RequestBody UpdateProductForm form) {
 
-        UserVo userVo = provider.getUserVo(token);
         return ResponseEntity.ok(ProductDTO.from(
-                productService.updateProduct(userVo.getId(), form)));
+                productService.updateProduct(Long.parseLong(token), form)));
     }
 
     @PutMapping("/item")
     public ResponseEntity<ProductItemDTO> updateProductItem(
-            @RequestHeader(name = "X-AUTH-TOKEN") String token,
+            @RequestHeader(name = "X-USER-ID") String token,
             @RequestBody UpdateProductItemForm form) {
 
-        UserVo userVo = provider.getUserVo(token);
         return ResponseEntity.ok(ProductItemDTO.from(
-                productItemService.updateProductItem(userVo.getId(), form)));
+                productItemService.updateProductItem(Long.parseLong(token), form)));
     }
 
     @DeleteMapping
     public ResponseEntity<Void> deleteProduct(
-            @RequestHeader(name = "X-AUTH-TOKEN") String token,
+            @RequestHeader(name = "X-USER-ID") String token,
             @RequestParam Long id) {
 
-        UserVo userVo = provider.getUserVo(token);
-        productService.deleteProduct(userVo.getId(), id);
+        productService.deleteProduct(Long.parseLong(token), id);
         return ResponseEntity.ok().build();
     }
 
     @DeleteMapping("/item")
     public ResponseEntity<Void> deleteProductItem(
-            @RequestHeader(name = "X-AUTH-TOKEN") String token,
+            @RequestHeader(name = "X-USER-ID") String token,
             @RequestParam Long id) {
 
-        UserVo userVo = provider.getUserVo(token);
-        productItemService.deleteProductItem(userVo.getId(), id);
+        productItemService.deleteProductItem(Long.parseLong(token), id);
         return ResponseEntity.ok().build();
     }
 
