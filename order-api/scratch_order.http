@@ -1,5 +1,5 @@
 ### 상품 추가 (셀러)
-POST http://localhost:8082/seller/product
+POST http://localhost:8082/product
 Content-Type: application/json
 X-AUTH-TOKEN: eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJZdVp5SEI5c3d0UjFBdnRGSmg2d1drclVwMTlDbDBGYy9BbXI4TjVwQ1hVPSIsImp0aSI6ImptaXhNb2hQbjY2V3c0S3ZMQVdjalE9PSIsInJvbGVzIjoiUk9MRV9TRUxMRVIiLCJpYXQiOjE3MjM3MzE0NjMsImV4cCI6MTcyMzgxNzg2M30.G7kxqXGSAsL8CnX0N6fD1IbqI2BxC9eE8Te4ftuZeMN2afX3-97sK6bWlWEi6uwRfjq_QALjW3__TNY2D8NNhw
 
@@ -16,7 +16,7 @@ X-AUTH-TOKEN: eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJZdVp5SEI5c3d0UjFBdnRGSmg2d1drclVwM
 }
 
 ### 상품 아이템 추가 (셀러)
-POST http://localhost:8082/seller/product/item
+POST http://localhost:8082/product/item
 Content-Type: application/json
 X-AUTH-TOKEN: eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJZdVp5SEI5c3d0UjFBdnRGSmg2d1drclVwMTlDbDBGYy9BbXI4TjVwQ1hVPSIsImp0aSI6ImptaXhNb2hQbjY2V3c0S3ZMQVdjalE9PSIsInJvbGVzIjoiUk9MRV9TRUxMRVIiLCJpYXQiOjE3MjM3MzE0NjMsImV4cCI6MTcyMzgxNzg2M30.G7kxqXGSAsL8CnX0N6fD1IbqI2BxC9eE8Te4ftuZeMN2afX3-97sK6bWlWEi6uwRfjq_QALjW3__TNY2D8NNhw
 
@@ -28,7 +28,7 @@ X-AUTH-TOKEN: eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJZdVp5SEI5c3d0UjFBdnRGSmg2d1drclVwM
 }
 
 ### 상품 수정 (셀러)
-PUT http://localhost:8082/seller/product
+PUT http://localhost:8082/product
 Content-Type: application/json
 X-AUTH-TOKEN: eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJZdVp5SEI5c3d0UjFBdnRGSmg2d1drclVwMTlDbDBGYy9BbXI4TjVwQ1hVPSIsImp0aSI6ImptaXhNb2hQbjY2V3c0S3ZMQVdjalE9PSIsInJvbGVzIjoiUk9MRV9TRUxMRVIiLCJpYXQiOjE3MjM3MzE0NjMsImV4cCI6MTcyMzgxNzg2M30.G7kxqXGSAsL8CnX0N6fD1IbqI2BxC9eE8Te4ftuZeMN2afX3-97sK6bWlWEi6uwRfjq_QALjW3__TNY2D8NNhw
 
@@ -47,7 +47,7 @@ X-AUTH-TOKEN: eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJZdVp5SEI5c3d0UjFBdnRGSmg2d1drclVwM
 }
 
 ### 상품 아이템 수정 (셀러)
-PUT http://localhost:8082/seller/product/item
+PUT http://localhost:8082/product/item
 Content-Type: application/json
 X-AUTH-TOKEN: eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJZdVp5SEI5c3d0UjFBdnRGSmg2d1drclVwMTlDbDBGYy9BbXI4TjVwQ1hVPSIsImp0aSI6ImptaXhNb2hQbjY2V3c0S3ZMQVdjalE9PSIsInJvbGVzIjoiUk9MRV9TRUxMRVIiLCJpYXQiOjE3MjM3MzE0NjMsImV4cCI6MTcyMzgxNzg2M30.G7kxqXGSAsL8CnX0N6fD1IbqI2BxC9eE8Te4ftuZeMN2afX3-97sK6bWlWEi6uwRfjq_QALjW3__TNY2D8NNhw
 
@@ -60,25 +60,25 @@ X-AUTH-TOKEN: eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJZdVp5SEI5c3d0UjFBdnRGSmg2d1drclVwM
 }
 
 ### 상품 삭제 (셀러)
-DELETE http://localhost:8082/seller/product?id=1
+DELETE http://localhost:8082/product?id=1
 Content-Type: application/json
 X-AUTH-TOKEN: eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJZdVp5SEI5c3d0UjFBdnRGSmg2d1drclVwMTlDbDBGYy9BbXI4TjVwQ1hVPSIsImp0aSI6ImptaXhNb2hQbjY2V3c0S3ZMQVdjalE9PSIsInJvbGVzIjoiUk9MRV9TRUxMRVIiLCJpYXQiOjE3MjM3MzE0NjMsImV4cCI6MTcyMzgxNzg2M30.G7kxqXGSAsL8CnX0N6fD1IbqI2BxC9eE8Te4ftuZeMN2afX3-97sK6bWlWEi6uwRfjq_QALjW3__TNY2D8NNhw
 
 ### 상품 아이템 삭제 (셀러)
-DELETE http://localhost:8082/seller/product/item?id=2
+DELETE http://localhost:8082/product/item?id=2
 Content-Type: application/json
 X-AUTH-TOKEN: eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJZdVp5SEI5c3d0UjFBdnRGSmg2d1drclVwMTlDbDBGYy9BbXI4TjVwQ1hVPSIsImp0aSI6ImptaXhNb2hQbjY2V3c0S3ZMQVdjalE9PSIsInJvbGVzIjoiUk9MRV9TRUxMRVIiLCJpYXQiOjE3MjM3MzE0NjMsImV4cCI6MTcyMzgxNzg2M30.G7kxqXGSAsL8CnX0N6fD1IbqI2BxC9eE8Te4ftuZeMN2afX3-97sK6bWlWEi6uwRfjq_QALjW3__TNY2D8NNhw
 
 ### 상품 검색 (고객)
-GET http://localhost:8082/search/product?name=나이키
+GET http://localhost:8082/product/search?name=나이키
 Content-Type: application/json
 
 ### 상품 상세 검색 (고객)
-GET http://localhost:8082/search/product/detail?id=1
+GET http://localhost:8082/product/search/detail?id=1
 Content-Type: application/json
 
 ### 장바구니 추가 (고객)
-POST http://localhost:8082/customer/wishlist
+POST http://localhost:8082/wishlist
 Content-Type: application/json
 X-AUTH-TOKEN: eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJZdVp5SEI5c3d0UjFBdnRGSmg2d1drclVwMTlDbDBGYy9BbXI4TjVwQ1hVPSIsImp0aSI6ImptaXhNb2hQbjY2V3c0S3ZMQVdjalE9PSIsInJvbGVzIjoiUk9MRV9TRUxMRVIiLCJpYXQiOjE3MjM3MzE0NjMsImV4cCI6MTcyMzgxNzg2M30.G7kxqXGSAsL8CnX0N6fD1IbqI2BxC9eE8Te4ftuZeMN2afX3-97sK6bWlWEi6uwRfjq_QALjW3__TNY2D8NNhw
 
@@ -98,12 +98,12 @@ X-AUTH-TOKEN: eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJZdVp5SEI5c3d0UjFBdnRGSmg2d1drclVwM
 }
 
 ### 카트 조회
-GET http://localhost:8082/customer/wishlist
+GET http://localhost:8082/wishlist
 Content-Type: application/json
 X-USER-ID: 2
 
 ### 카트 주문
-POST http://localhost:8082/customer/order
+POST http://localhost:8082/order
 Content-Type: application/json
 X-AUTH-TOKEN: eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJZdVp5SEI5c3d0UjFBdnRGSmg2d1drclVwMTlDbDBGYy9BbXI4TjVwQ1hVPSIsImp0aSI6ImptaXhNb2hQbjY2V3c0S3ZMQVdjalE9PSIsInJvbGVzIjoiUk9MRV9TRUxMRVIiLCJpYXQiOjE3MjM3MzE0NjMsImV4cCI6MTcyMzgxNzg2M30.G7kxqXGSAsL8CnX0N6fD1IbqI2BxC9eE8Te4ftuZeMN2afX3-97sK6bWlWEi6uwRfjq_QALjW3__TNY2D8NNhw
 
