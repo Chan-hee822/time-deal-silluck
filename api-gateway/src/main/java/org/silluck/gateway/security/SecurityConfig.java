@@ -33,13 +33,14 @@ public class SecurityConfig {
                 .headers(headers -> headers.frameOptions(ServerHttpSecurity.HeaderSpec.FrameOptionsSpec::disable))
                 .securityContextRepository(NoOpServerSecurityContextRepository.getInstance())
                 .authorizeExchange(authorizeExchangeSpec -> authorizeExchangeSpec
-                                .pathMatchers("/signup/**", "/signin/**","/product/search/**")
-                                .permitAll()
-                                .pathMatchers("/seller/**").hasAuthority("ROLE_SELLER") // 판매자만 접근 가능
-                                .pathMatchers("/customer/**").hasAuthority("ROLE_CUSTOMER") // 고객만 접근 가능
-                                .pathMatchers("/wishlist/**").hasAuthority("ROLE_CUSTOMER")
-                                .pathMatchers("/order/**").hasAuthority("ROLE_CUSTOMER")
-                                .pathMatchers("/product/**").hasAuthority("ROLE_SELLER")
+                        .pathMatchers("/signup/**", "/signin/**", "/product/search/**")
+                        .permitAll()
+                        .pathMatchers("/seller/**").hasAuthority("ROLE_SELLER") // 판매자만 접근 가능
+                        .pathMatchers("/customer/**").hasAuthority("ROLE_CUSTOMER") // 고객만 접근 가능
+                        .pathMatchers("/wishlist/**").hasAuthority("ROLE_CUSTOMER")
+                        .pathMatchers("/order/**").hasAuthority("ROLE_CUSTOMER")
+                        .pathMatchers("/product/**").hasAuthority("ROLE_SELLER")
+                        .pathMatchers("/payment/**").hasAuthority("ROLE_CUSTOMER")
                 )
                 .exceptionHandling(exceptionHandlingSpec -> exceptionHandlingSpec
                         .authenticationEntryPoint((exchange, denied) -> Mono.fromRunnable(() -> {

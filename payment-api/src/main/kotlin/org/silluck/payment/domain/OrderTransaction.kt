@@ -16,7 +16,7 @@ class OrderTransaction(
     @Enumerated(EnumType.STRING)
     val transactionType: TransactionType,       // 결제, 취소, 망취소
     @Enumerated(EnumType.STRING)
-    val transactionStatue: TransactionStatus,   // 생성, 성공, 실패
+    var transactionStatue: TransactionStatus,   // 생성, 성공, 실패
     val transactionAmount: Long,                // 거래금액
     val merchantTransactionId: String,          // 판매자
     var payMethodTransactionId: String? = null, // 거래방법

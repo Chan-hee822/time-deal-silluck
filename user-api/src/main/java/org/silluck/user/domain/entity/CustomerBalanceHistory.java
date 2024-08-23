@@ -6,6 +6,7 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.hibernate.envers.AuditOverride;
+import org.silluck.user.domain.common.TransactionType;
 
 @Getter
 @Builder
@@ -28,4 +29,8 @@ public class CustomerBalanceHistory extends BaseEntity {
     // 누구로 부터 이벤트 발생
     private String fromMessage;
     private String description;
+    // transaction
+    @Enumerated(EnumType.STRING)
+    private TransactionType transactionType;
+    private String transactionId;
 }

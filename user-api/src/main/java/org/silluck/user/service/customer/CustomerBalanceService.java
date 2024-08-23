@@ -9,6 +9,10 @@ import org.silluck.user.repository.CustomerRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.UUID;
+
+import static org.silluck.user.domain.common.TransactionType.DEPOSIT;
+import static org.silluck.user.domain.common.TransactionType.WITHDRAWAL;
 import static org.silluck.user.exception.ErrorCode.NOT_ENOUGH_BALANCE;
 import static org.silluck.user.exception.ErrorCode.NOT_FOUND_USER;
 
@@ -19,7 +23,8 @@ public class CustomerBalanceService {
     private final CustomerBalanceHistoryRepository customerBalanceHistoryRepository;
     private final CustomerRepository customerRepository;
 
-    @Transactional(noRollbackFor = {CustomException.class}) // 해당 exception이 나와 있을 때 noRollback
+    @Transactional(noRollbackFor = {CustomException.class})
+    // 해당 exception이 나와 있을 때 noRollback
     public CustomerBalanceHistory changeBalance(Long customerId, ChangeBalanceForm form) throws CustomException {   // 잔액 부족 같은 예외
 
         CustomerBalanceHistory customerBalanceHistory =
@@ -41,6 +46,8 @@ public class CustomerBalanceService {
                 .description(form.getMessage())
                 .fromMessage(form.getFrom())
                 .customer(customerBalanceHistory.getCustomer())
+                .transactionType(form.getMoney() > 0 ? DEPOSIT : WITHDRAWAL)
+                .transactionId(UUID.randomUUID().toString().replace("-", ""))
                 .build();
 
         customerBalanceHistory.getCustomer().setBalance(customerBalanceHistory.getCurrentMoney());
