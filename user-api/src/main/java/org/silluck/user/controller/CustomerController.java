@@ -1,8 +1,9 @@
 package org.silluck.user.controller;
 
 import lombok.RequiredArgsConstructor;
-import org.silluck.user.domain.dto.response.CustomerDTO;
 import org.silluck.user.domain.dto.request.ChangeBalanceForm;
+import org.silluck.user.domain.dto.response.CustomerBalanceHistoryDTO;
+import org.silluck.user.domain.dto.response.CustomerDTO;
 import org.silluck.user.domain.entity.Customer;
 import org.silluck.user.exception.CustomException;
 import org.silluck.user.exception.ErrorCode;
@@ -29,11 +30,12 @@ public class CustomerController {
     }
 
     @PostMapping("/balance")
-    public ResponseEntity<Integer> changeBalance(
+    public ResponseEntity<CustomerBalanceHistoryDTO> changeBalance(
             @RequestHeader(name = "X-USER-ID") String userId,
             @RequestBody ChangeBalanceForm form) {
 
-        return ResponseEntity.ok(customerBalanceService
-                .changeBalance(Long.parseLong(userId), form).getCurrentMoney());
+        return ResponseEntity.ok(CustomerBalanceHistoryDTO.from(
+                customerBalanceService.changeBalance(
+                        Long.parseLong(userId), form)));
     }
 }

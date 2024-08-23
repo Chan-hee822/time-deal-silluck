@@ -17,7 +17,7 @@ class GlobalExceptionHandler {
         return ErrorResponse(e.errorCode)
     }
 
-    @ExceptionHandler(PaymentException::class)
+    @ExceptionHandler(Exception::class)
     fun handleException(
         e: Exception
     ): ErrorResponse {

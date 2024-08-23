@@ -1,0 +1,33 @@
+server:
+  port: 8083
+  shutdown: graceful
+
+spring:
+  main:
+    allow-bean-definition-overriding: true
+
+  mvc:
+    path match:
+      matching-strategy: ant_path_matcher
+
+  cloud:
+    openfeign:
+      okhttp:
+        enabled: true
+      autoconfiguration:
+        jackson:
+          enabled: true
+
+  jpa:
+    database: h2
+    hibernate:
+      ddl-auto: create-drop
+    generate-ddl: true
+    show-sql: true
+    open-in-view: false
+
+  datasource:
+    url: jdbc:h2:file:/Users/hanchanhee/dev/h2Data
+    driver-class-name: org.h2.Driver
+    username: sa
+    password: 1

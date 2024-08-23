@@ -2,7 +2,6 @@ package org.silluck.domain.order.application;
 
 import lombok.RequiredArgsConstructor;
 import org.silluck.domain.order.client.UserClient;
-import org.silluck.domain.order.client.user.ChangeBalanceForm;
 import org.silluck.domain.order.client.user.CustomerDTO;
 import org.silluck.domain.order.domain.entity.ProductItem;
 import org.silluck.domain.order.domain.redis.Wishlist;
@@ -50,12 +49,13 @@ public class OrderApplication {
         }
 
         // 롤백 전략 필요 - 필요한 전략 찾기
-        userClient.changeBalance(token,
-                ChangeBalanceForm.builder()
-                .from("USER")
-                .message("Order")
-                .money(-totalPrice)
-                .build());
+        // 결제 서비스로 수행
+//        userClient.changeBalance(token,
+//                ChangeBalanceForm.builder()
+//                .from("USER")
+//                .message("Order")
+//                .money(-totalPrice)
+//                .build());
 
         for (Wishlist.Product wishlistProduct : orderWishlist.getProducts()) {
             for (Wishlist.ProductItem wishlistProductItem : wishlistProduct.getProductItems()) {
