@@ -3,6 +3,7 @@ package org.silluck.payment.client
 import com.ninjasquad.springmockk.MockkBean
 import io.mockk.every
 import org.springframework.boot.test.context.SpringBootTest
+import java.time.LocalDateTime
 import kotlin.test.Test
 
 @SpringBootTest
@@ -28,7 +29,8 @@ class UserClientTest {
             fromMessage = "user",
             description = "출금",
             transactionType = TransactionType.WITHDRAWAL,
-            transactionId = "123123141"
+            transactionId = "123123141",
+            transactedAt = LocalDateTime.now()
         )
 
         every {

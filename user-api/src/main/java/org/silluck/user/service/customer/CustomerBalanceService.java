@@ -9,6 +9,7 @@ import org.silluck.user.repository.CustomerRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDateTime;
 import java.util.UUID;
 
 import static org.silluck.user.domain.common.TransactionType.DEPOSIT;
@@ -48,6 +49,7 @@ public class CustomerBalanceService {
                 .customer(customerBalanceHistory.getCustomer())
                 .transactionType(form.getMoney() > 0 ? DEPOSIT : WITHDRAWAL)
                 .transactionId(UUID.randomUUID().toString().replace("-", ""))
+                .transactedAt(LocalDateTime.now())
                 .build();
 
         customerBalanceHistory.getCustomer().setBalance(customerBalanceHistory.getCurrentMoney());
