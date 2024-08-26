@@ -1,7 +1,6 @@
 package org.silluck.domain.order.application;
 
 import org.junit.jupiter.api.Test;
-import org.silluck.domain.config.JwtAuthenticationProvider;
 import org.silluck.domain.order.domain.dto.request.AddProductForm;
 import org.silluck.domain.order.domain.dto.request.AddProductInWishlistForm;
 import org.silluck.domain.order.domain.dto.request.AddProductItemForm;
@@ -31,8 +30,29 @@ class WishlistApplicationTest {
     private ProductService productService;
     @Autowired
     private ProductRepository productRepository;
-    @Autowired
-    private JwtAuthenticationProvider jwtAuthenticationProvider;
+
+    private static AddProductForm makeProductForm(
+            String name, String description, int itemCount) {
+        List<AddProductItemForm> itemForms = new ArrayList<>();
+        for (int i = 0; i < itemCount; i++) {
+            itemForms.add(makeProductItemForm(null, name + i));
+        }
+        return AddProductForm.builder()
+                .name(name)
+                .description(description)
+                .items(itemForms)
+                .build();
+    }
+
+    private static AddProductItemForm makeProductItemForm(
+            Long productId, String name) {
+        return AddProductItemForm.builder()
+                .productId(productId)
+                .name(name)
+                .price(50000)
+                .count(10)
+                .build();
+    }
 
     @Test
     void ADD_PRODUCT_IN_WISHLIST_TEST() {
@@ -86,30 +106,6 @@ class WishlistApplicationTest {
         AddProductForm form = makeProductForm("나이키 에어포스 1", "나이키 운동화", 3);
 
         return productService.addProduct(sellerId, form);
-    }
-
-
-    private static AddProductForm makeProductForm(
-            String name, String description, int itemCount) {
-        List<AddProductItemForm> itemForms = new ArrayList<>();
-        for (int i = 0; i < itemCount; i++) {
-            itemForms.add(makeProductItemForm(null, name + i));
-        }
-        return AddProductForm.builder()
-                .name(name)
-                .description(description)
-                .items(itemForms)
-                .build();
-    }
-
-    private static AddProductItemForm makeProductItemForm(
-            Long productId, String name) {
-        return AddProductItemForm.builder()
-                .productId(productId)
-                .name(name)
-                .price(50000)
-                .count(10)
-                .build();
     }
 
 }

@@ -1,7 +1,6 @@
 package org.silluck.domain.order.service;
 
 import org.junit.jupiter.api.Test;
-import org.silluck.domain.config.JwtAuthenticationProvider;
 import org.silluck.domain.order.domain.dto.request.AddProductForm;
 import org.silluck.domain.order.domain.dto.request.AddProductItemForm;
 import org.silluck.domain.order.domain.entity.Product;
@@ -26,29 +25,6 @@ class ProductServiceTest {
     private ProductService productService;
     @Autowired
     private ProductRepository productRepository;
-    @Autowired
-    private JwtAuthenticationProvider jwtAuthenticationProvider;
-
-    @Test
-    void ADD_PRODUCT_TEST() {
-        Long sellerId = 1L;
-
-        AddProductForm form = makeProductForm("나이키 에어포스 1", "나이키 운동화", 3);
-
-        Product product = productService.addProduct(sellerId, form);
-
-        Product result = productRepository.findWithProductItemsById(product.getId()).get();
-
-        assertNotNull(result);
-        assertEquals(result.getName(), "나이키 에어포스 1");
-        assertEquals(result.getDescription(), "나이키 운동화");
-        // 지연로딩으로 하위 엔티티 가져오지 못 함 처리 필요
-        assertEquals(result.getProductItems().size(), 3);
-        assertEquals(result.getProductItems().get(0).getName(), "나이키 에어포스 10");
-        assertEquals(result.getProductItems().get(0).getPrice(), 50000);
-        assertEquals(result.getProductItems().get(0).getCount(), 1);
-    }
-
 
     private static AddProductForm makeProductForm(
             String name, String description, int itemCount) {
@@ -71,5 +47,25 @@ class ProductServiceTest {
                 .price(50000)
                 .count(1)
                 .build();
+    }
+
+    @Test
+    void ADD_PRODUCT_TEST() {
+        Long sellerId = 1L;
+
+        AddProductForm form = makeProductForm("나이키 에어포스 1", "나이키 운동화", 3);
+
+        Product product = productService.addProduct(sellerId, form);
+
+        Product result = productRepository.findWithProductItemsById(product.getId()).get();
+
+        assertNotNull(result);
+        assertEquals(result.getName(), "나이키 에어포스 1");
+        assertEquals(result.getDescription(), "나이키 운동화");
+        // 지연로딩으로 하위 엔티티 가져오지 못 함 처리 필요
+        assertEquals(result.getProductItems().size(), 3);
+        assertEquals(result.getProductItems().get(0).getName(), "나이키 에어포스 10");
+        assertEquals(result.getProductItems().get(0).getPrice(), 50000);
+        assertEquals(result.getProductItems().get(0).getCount(), 1);
     }
 }

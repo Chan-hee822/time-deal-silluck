@@ -6,6 +6,8 @@ import lombok.*;
 import org.silluck.user.domain.common.TransactionType;
 import org.silluck.user.domain.entity.CustomerBalanceHistory;
 
+import java.time.LocalDateTime;
+
 @Getter
 @Setter
 @AllArgsConstructor
@@ -21,6 +23,7 @@ public class CustomerBalanceHistoryDTO {
     @Enumerated(EnumType.STRING)
     private TransactionType transactionType;
     private String transactionId;
+    private LocalDateTime transactedAt;
 
     public static CustomerBalanceHistoryDTO from(
             CustomerBalanceHistory balanceHistory) {
@@ -33,6 +36,7 @@ public class CustomerBalanceHistoryDTO {
                 .description(balanceHistory.getDescription())
                 .transactionType(balanceHistory.getTransactionType())
                 .transactionId(balanceHistory.getTransactionId())
+                .transactedAt(balanceHistory.getTransactedAt())
                 .build();
     }
 }

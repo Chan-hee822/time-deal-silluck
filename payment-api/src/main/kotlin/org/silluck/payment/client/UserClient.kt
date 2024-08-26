@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestHeader
+import java.time.LocalDateTime
 
 @FeignClient(
     name = "user-api",
@@ -48,6 +49,7 @@ data class CustomerBalanceHistoryDTO(
     // transaction
     val transactionType: TransactionType,
     val transactionId: String,
+    val transactedAt: LocalDateTime,
 )
 
 enum class TransactionType {

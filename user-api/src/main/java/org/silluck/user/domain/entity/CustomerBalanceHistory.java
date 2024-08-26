@@ -8,6 +8,8 @@ import lombok.NoArgsConstructor;
 import org.hibernate.envers.AuditOverride;
 import org.silluck.user.domain.common.TransactionType;
 
+import java.time.LocalDateTime;
+
 @Getter
 @Builder
 @NoArgsConstructor
@@ -33,4 +35,5 @@ public class CustomerBalanceHistory extends BaseEntity {
     @Enumerated(EnumType.STRING)
     private TransactionType transactionType;
     private String transactionId;
+    private LocalDateTime transactedAt;
 }
