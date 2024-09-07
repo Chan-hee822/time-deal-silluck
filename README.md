@@ -18,10 +18,12 @@ e-commerce project, msa oriented project
  - 설명 : 마아크로 서비스 구성된 서버, 각 독립적인 API서비스로 정의, HTTP API 통신을 통해 마이크로 서비스 간 통신
  - redis를 통한 장바구니 및 재고 데이터 처리
  - kafka 이벤트 발행으로 주문-결제 프로세스 비동기 통신
-#### User API - Mailgun API
+
+#### 시큐리티 아키텍처
+#### 메일 인증 프로세스
 ```mermaid
 sequenceDiagram
-    actor User
+    actor User 
     participant Application
     participant MailgunClient
     participant Mailgun
@@ -38,6 +40,8 @@ sequenceDiagram
     Application->>Application: 인증 처리
     Application-->>User: 인증 완료 응답
 ```
+#### 결제 프로세스
+#### 반품 프로세스
 
 # 주요 기능
 - **Netflix Eureka**를 이용한 Client-side Discovery 방식의 Service Discovery 구현
@@ -60,5 +64,7 @@ sequenceDiagram
 
 - 성능 개선 및 트러블슈팅
 - 기술적 의사 결정
+  - Feign Client 선택 이유 -> 간결하고 직관적인 사용법 + Spring Cloud와의 통합 용이성
+  - 장바구니 redis에 담은 이유
 - api 명세 : 포스트맨 api 명세 혹은 notion
 - erd : 계속해서 바뀌기 때문에 아래로 
