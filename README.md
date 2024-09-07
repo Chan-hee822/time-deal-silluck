@@ -14,12 +14,10 @@ e-commerce project, msa oriented project
 
 # 프로젝트 아키텍처
 ### 서비스 아키텍처
-- 각 서비스 feign client 동기 통신
-- user - 외부 api mailgum 동기 통신
-- product - redis
-- order, payment -> kafka 비동기 통신, redis
-- 1개 스키마(MySQL) 안 서비스 당 DB
- - 설명 : 마아크로 서비스 구성된 서버, 각 독립적인 API서비스로 정의 HTTP API 통신을 통해 마이크로 서비스 간 통신
+![제목 없는 프레젠테이션](https://github.com/user-attachments/assets/4490d2ac-97e3-4b71-9ffc-7431f73ac54e)
+ - 설명 : 마아크로 서비스 구성된 서버, 각 독립적인 API서비스로 정의, HTTP API 통신을 통해 마이크로 서비스 간 통신
+ - redis를 통한 장바구니 및 재고 데이터 처리
+ - kafka 이벤트 발행으로 주문-결제 프로세스 비동기 통신
 
 # 주요 기능
 - **Netflix Eureka**를 이용한 Client-side Discovery 방식의 Service Discovery 구현
