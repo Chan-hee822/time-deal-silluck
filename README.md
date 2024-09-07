@@ -18,6 +18,26 @@ e-commerce project, msa oriented project
  - 설명 : 마아크로 서비스 구성된 서버, 각 독립적인 API서비스로 정의, HTTP API 통신을 통해 마이크로 서비스 간 통신
  - redis를 통한 장바구니 및 재고 데이터 처리
  - kafka 이벤트 발행으로 주문-결제 프로세스 비동기 통신
+#### User API - Mailgun API
+```mermaid
+sequenceDiagram
+    actor User
+    participant Application
+    participant MailgunClient
+    participant Mailgun
+
+    User->>Application: 회원가입 요청
+    Application->>Application: 사용자 정보 처리
+    Application->>MailgunClient: 인증 이메일 발송 요청
+    MailgunClient->>Mailgun: 이메일 발송
+    Mailgun-->>MailgunClient: 발송 완료
+    MailgunClient-->>Application: 발송 결과
+    Application-->>User: 회원가입 완료 응답
+
+    User->>Application: 이메일 인증 요청
+    Application->>Application: 인증 처리
+    Application-->>User: 인증 완료 응답
+```
 
 # 주요 기능
 - **Netflix Eureka**를 이용한 Client-side Discovery 방식의 Service Discovery 구현
